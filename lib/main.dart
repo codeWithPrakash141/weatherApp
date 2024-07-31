@@ -5,6 +5,7 @@ import 'package:portfolio_app/Activity/location.dart';
 
 void main(){
   runApp(MaterialApp(
+    home: Home(),
     initialRoute: "/home",
     routes: {
       '/home': (context) => Home(),

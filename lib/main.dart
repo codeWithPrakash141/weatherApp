@@ -5,12 +5,12 @@ import 'package:portfolio_app/Activity/location.dart';
 
 void main(){
   runApp(MaterialApp(
-    home: Home(),
-    initialRoute: "/home",
+
+    initialRoute: "/loading",
     routes: {
-      '/home': (context) => Home(),
-      'location': (context) => Location(),
-      '/loading': (context) => Loading(),
+      '/home': (context) => const Home(),
+      '/location': (context) => const Location(),
+      '/loading': (context) => const Loading(),
     },
   ));
 }

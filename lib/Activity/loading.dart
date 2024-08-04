@@ -11,10 +11,13 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
+  String Temparature = "Loading";
   void startApp()async{
-    Worker instenet = Worker(location: "Almora");
+    Worker instenet = Worker(location: "delhi");
    await instenet.getData();
-   instenet.temp;
+    setState(() {
+      Temparature = instenet.temp;
+    });
   }
   @override
   void initState() {
@@ -30,7 +33,7 @@ class _LoadingState extends State<Loading> {
           children: <Widget>[
             TextButton.icon(onPressed: (){
               Navigator.pushNamed(context,"/home");
-            }, icon: Icon(Icons.add_to_home_screen_rounded),label: const Text("Go to home"))
+            }, icon: Icon(Icons.add_to_home_screen_rounded),label:  Text(Temparature))
           ],
         ),
       )

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'dart:math';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -45,25 +46,44 @@ void _fetchArgument(){
   @override
   Widget build(BuildContext context) {
     var argument = ModalRoute.of(context)?.settings.arguments;
-
+    var cityName = ["Noida","Delhi","Almora","London","United State","France"];
+    final _random =  new Random();
+    var city = cityName [_random.nextInt(cityName.length)];
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Weather app"),
+      body: SafeArea(
+    child: Container(
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 8),
+            margin: EdgeInsets.symmetric(vertical: 24,horizontal: 15),
+           decoration: BoxDecoration(
+             color: Colors.black12,
+             borderRadius: BorderRadius.circular(24),
+           ),
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: (){},
+                  child: Container(child: Icon(Icons.search_outlined,color: Colors.blueAccent,),
+                    margin: EdgeInsets.fromLTRB(4, 0, 10, 0),),
+                ),
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: "Search $city ",
+                    ),
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
       ),
-     body: SafeArea(
-       child: Padding(
-         padding: const EdgeInsets.all(20),
-         child: Column(
-           children: <Widget>[
-             Text("Temperature : $tempData"),
-             Text("Air Speed : $airData"),
-             Text("Main description : $mainDesData"),
-             Text("Descriiption : $desData"),
-             Text("humidity : $humData")
-           ],
-         ),
-       ),
-     ),
+
+    ),
+      ),
     );
   }
 }

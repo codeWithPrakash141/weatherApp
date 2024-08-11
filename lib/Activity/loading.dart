@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_app/worker/worker.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Loading extends StatefulWidget {
   const Loading({super.key});
@@ -22,14 +23,17 @@ class _LoadingState extends State<Loading> {
     air = instance.airSpeed;
     des = instance.description;
     main_des = instance.main;
-    Navigator.pushNamedAndRemoveUntil(context, "/home",(route) => false,
-        arguments: {
-          "temp_value": temp,
-          "hum_value": hum,
-          "air_value": air,
-          "des_value": des,
-          "main_des_value": main_des
-        });
+    Future.delayed(Duration(seconds: 2),(){
+      Navigator.pushNamedAndRemoveUntil(context, "/home",(route) => false,
+          arguments: {
+            "temp_value": temp,
+            "hum_value": hum,
+            "air_value": air,
+            "des_value": des,
+            "main_des_value": main_des
+          });
+    });
+
   }
 
   @override
@@ -42,9 +46,23 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Text("Loading"),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset("assets/images/logo.png",height: 240, width: 240,),
+            Text("Mausam App",style: TextStyle(fontSize: 30,fontWeight: FontWeight.w500,color: Colors.white),),
+            SizedBox(height: 10),
+            Text("Made by codeWithPrakash",style: TextStyle(fontSize:18,fontWeight: FontWeight.w500,color: Colors.white),),
+          SizedBox(height: 40,),
+          SpinKitWave(
+          color: Colors.white,
+          size: 50.0,
+        ),
+          ],
+        ),
       ),
+      backgroundColor: Colors.blue[300],
     );
   }
 }

@@ -26,19 +26,19 @@ class _MyAppState extends State<WeatherApp> {
         "/location": (context) => const Location(),
         "/loading" : (context) => const Loading(),
       },
-      themeMode: ThemeMode.light,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.blue,
-        ),
-      ),
-      darkTheme: ThemeData(
-        primarySwatch: Colors.purple,
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.purple,
-        ),
-      ),
+      // themeMode: ThemeMode.light,
+      // theme: ThemeData(
+      //   primarySwatch: Colors.blue,
+      //   appBarTheme: AppBarTheme(
+      //     backgroundColor: Colors.blue,
+      //   ),
+      // ),
+      // darkTheme: ThemeData(
+      //   primarySwatch: Colors.purple,
+      //   appBarTheme: AppBarTheme(
+      //     backgroundColor: Colors.purple,
+      //   ),
+      // ),
     );
   }
 }

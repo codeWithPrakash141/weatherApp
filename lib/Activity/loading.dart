@@ -10,27 +10,34 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
+  String city = "Noida";
   late String temp;
   late String hum;
   late String air;
   late String des;
   late String main_des;
-  void startApp() async {
-    Worker instance = Worker(location: "Almora");
+  late String icon;
+  void startApp(city) async {
+    Worker instance = Worker(location: city);
     await instance.getData();
     temp = instance.temp;
     hum = instance.humidity;
     air = instance.airSpeed;
     des = instance.description;
     main_des = instance.main;
+    icon = instance.icon;
+if(mounted)
     Future.delayed(Duration(seconds: 2),(){
+if(mounted)
       Navigator.pushNamedAndRemoveUntil(context, "/home",(route) => false,
           arguments: {
             "temp_value": temp,
             "hum_value": hum,
             "air_value": air,
             "des_value": des,
-            "main_des_value": main_des
+            "main_des_value": main_des,
+            "icon_value" : icon,
+            "city_value" : city,
           });
     });
 
@@ -38,13 +45,17 @@ class _LoadingState extends State<Loading> {
 
   @override
   void initState() {
-    startApp();
-    // TODO: implement initState
+
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
+    final argument = ModalRoute.of(context)?.settings.arguments;
+    if (argument is Map<String,dynamic>){
+      city = argument["search_text"];
+    }
+    startApp(city);
+
     return Scaffold(
       body: Center(
         child: Column(

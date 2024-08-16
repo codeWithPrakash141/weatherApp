@@ -9,6 +9,7 @@ class Worker{
  late String airSpeed;
   late String description;
  late  String main;
+ late String icon;
 
 
   Future<void> getData() async {
@@ -20,7 +21,9 @@ class Worker{
 
     // getting temp and huminity data
     Map temp_data = data['main'];
-    String getTemp = temp_data['temp'].toString();
+    double  tempFehranahiet = temp_data['temp'];
+    double tempCelcius = tempFehranahiet-273.15;
+    String getTemp = tempCelcius.toString();
     String getHumidity = temp_data["humidity"].toString();
 
     // getting main and description & main data
@@ -28,11 +31,14 @@ class Worker{
     Map weather_main_data = weather_data[0];
     String getMain_des = weather_main_data['main'];
     String getDes = weather_main_data['description'];
+    String getIcon = weather_main_data['icon'].toString();
 
 // getting air speed
 
     Map wind_data = data["wind"];
-    double getAir = wind_data["speed"];
+    double getAirMps = wind_data["speed"];
+    double getAirKmp = getAirMps * 3.6;
+    String getAir = getAirKmp.toString();
 
 // Assning value
 
@@ -41,12 +47,14 @@ class Worker{
     airSpeed = getAir.toString();
     description = getDes;
     main = getMain_des;
+    icon = getIcon;
    }catch(e){
     temp = "Please check your city";
     humidity = "Please check your city";
     airSpeed = "Please check your city";
     description = "Please check your city";
     main = "Please check your city";
+    icon = "Please check your city";
    }
 }
 

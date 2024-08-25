@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:weather_icons/weather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -14,13 +13,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   TextEditingController searchController = new TextEditingController();
-  String tempData = "Loading....";
-  String airData = "Loading....";
-  String desData = "Loading....";
-  String mainDesData = "Loading....";
-  String humData = "Loading....";
+  String tempData = "N/A";
+  String airData = "N/A";
+  String desData = "N/A";
+  String mainDesData = "N/A";
+  String humData = "N/A";
     String iconData = "10d";
-    String cityData = "Loading....";
+    String cityData = "N/A";
 
   
 
@@ -37,8 +36,14 @@ class _HomeState extends State<Home> {
     var info = ModalRoute.of(context)?.settings.arguments;
     if (info is Map<String, dynamic>) {
       setState(() {
-        tempData = (info["temp_value"].toString()).substring(0, 4);
-        airData = (info["air_value"].toString()).substring(0, 3);
+        tempData = (info["temp_value"].toString());
+        airData = (info["air_value"].toString());
+        if(tempData == "N/A"){
+          print("worng city");
+        }else{
+          tempData = (info["temp_value"].toString()).substring(0,4);
+          airData = (info["air_value"].toString()).substring(0,3);
+        }
         desData = info["des_value"];
         mainDesData = info["main_des_value"];
         humData = info["hum_value"];
@@ -96,12 +101,17 @@ class _HomeState extends State<Home> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, "/loading",
-                              arguments: {
-                            "search_text" : searchController.text,
-                              }
+                          if((searchController.text).replaceAll("   ", "") == ""){
+                           const  Text("wrong city");
+                          }else{
+                            Navigator.pushReplacementNamed(context, "/loading",
+                                arguments: {
+                                  "search_text" : searchController.text,
+                                }
 
-                          );
+                            );
+                          }
+
                         },
                         child: Container(
                           child: Icon(

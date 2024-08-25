@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_app/Activity/home.dart';
-import 'package:portfolio_app/Activity/loading.dart';
-import 'package:portfolio_app/Activity/location.dart';
+import 'package:mausam_app/Activity/home.dart';
+import 'package:mausam_app/Activity/loading.dart';
+import 'package:mausam_app/Activity/location.dart';
 
 void main() {
-  runApp(WeatherApp());
+  runApp(mausam_app());
 }
 
-class WeatherApp extends StatefulWidget {
-  const WeatherApp({super.key});
+class mausam_app extends StatefulWidget {
+  const mausam_app({super.key});
 
   @override
-  State<WeatherApp> createState() => _MyAppState();
+  State<mausam_app> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<WeatherApp> {
+class _MyAppState extends State<mausam_app> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

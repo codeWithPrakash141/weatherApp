@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_app/worker/worker.dart';
+import 'package:mausam_app/worker/worker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Loading extends StatefulWidget {
@@ -26,10 +26,10 @@ class _LoadingState extends State<Loading> {
     des = instance.description;
     main_des = instance.main;
     icon = instance.icon;
-if(mounted)
-    Future.delayed(Duration(seconds: 2),(){
-if(mounted)
-      Navigator.pushNamedAndRemoveUntil(context, "/home",(route) => false,
+if(mounted) {
+  Future.delayed(Duration(seconds: 2),(){
+if(mounted) {
+  Navigator.pushNamedAndRemoveUntil(context, "/home",(route) => false,
           arguments: {
             "temp_value": temp,
             "hum_value": hum,
@@ -39,7 +39,9 @@ if(mounted)
             "icon_value" : icon,
             "city_value" : city,
           });
+}
     });
+}
 
   }
 
@@ -57,20 +59,23 @@ if(mounted)
     startApp(city);
 
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset("assets/images/logo.png",height: 240, width: 240,),
-            Text("Mausam App",style: TextStyle(fontSize: 30,fontWeight: FontWeight.w500,color: Colors.white),),
-            SizedBox(height: 10),
-            Text("Made by codeWithPrakash",style: TextStyle(fontSize:18,fontWeight: FontWeight.w500,color: Colors.white),),
-          SizedBox(height: 40,),
-          SpinKitWave(
-          color: Colors.white,
-          size: 50.0,
-        ),
-          ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+             const SizedBox(height: 170,),
+              Image.asset("assets/images/logo.png",height: 240, width: 240,),
+              Text("Mausam App",style: TextStyle(fontSize: 30,fontWeight: FontWeight.w500,color: Colors.white),),
+              SizedBox(height: 10),
+              Text("Made by codeWithPrakash",style: TextStyle(fontSize:18,fontWeight: FontWeight.w500,color: Colors.white),),
+            SizedBox(height: 40,),
+            SpinKitWave(
+            color: Colors.white,
+            size: 50.0,
+          ),
+            ],
+          ),
         ),
       ),
       backgroundColor: Colors.blue[300],

@@ -7,14 +7,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:portfolio_app/Activity/home.dart';
+import 'package:mausam_app/main.dart';
+import 'package:mausam_app/Activity/home.dart';
 
-import 'package:portfolio_app/main.dart';
+import 'package:mausam_app/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const WeatherApp());
+    await tester.pumpWidget(const mausam_app());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

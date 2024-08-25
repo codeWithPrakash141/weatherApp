@@ -49,12 +49,12 @@ class Worker{
     main = getMain_des;
     icon = getIcon;
    }catch(e){
-    temp = "Please check your city";
-    humidity = "Please check your city";
-    airSpeed = "Please check your city";
-    description = "Please check your city";
-    main = "Please check your city";
-    icon = "Please check your city";
+    temp = "N/A";
+    humidity = "N/A";
+    airSpeed = "N/A";
+    description = "N/A";
+    main = "N/A";
+    icon = "10d";
    }
 }
 
